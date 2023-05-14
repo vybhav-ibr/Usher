@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<launch>
+    <!-- Arguments -->
+    <arg name="move_forward_only" default="true"/>
+
+    <!-- AMCL-->
+    <include file="$(find usher_description)/launch/amcl.launch">
+    </include>
+    
+  <!-- Map server for Map-based Navigation-->
+ 
+	 <node pkg="map_server" name="map_server" type="map_server" args="$(find usher_description)/maps/fin_hotel.yaml"/>
+
+
+  <!-- rviz -->
+  <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find usher_description)/launch/urdf.rviz"/>
+
+  <!-- move_base -->
+  <include file="$(find usher_description)/launch/move_base.launch">
+    <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+  </include>
+
+</launch>

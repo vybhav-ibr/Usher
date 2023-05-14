@@ -1,0 +1,111 @@
+
+<sdf version="1.7">
+  <world name="default">
+    <gravity>0.0 0.0 -18.</gravity>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="box">
+      <static>true</static>
+      <pose>0 0 2 0 0 0</pose>
+      <link name="link_hotel">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+            <uri>model://meshes/hotel.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+            <uri>model://meshes/hotel.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <mass>1500</mass>
+      </link>
+      <joint name="bj" type="fixed">
+        <parent>sun</parent>
+        <child>link_hotel</child>
+      </joint>
+      <velocity>0 0 0 0 0 0</velocity>
+    </model>
+    <actor name="animated_box">
+        <link name="link">
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>.2 .2 .2</size>
+              </box>
+            </geometry>
+          </visual>
+        </link>
+        <script>
+          <loop>true</loop>
+          <delay_start>0.000000</delay_start>
+          <auto_start>true</auto_start>
+          <trajectory id="0" type="square">
+             <waypoint>
+                <time>0.0</time>
+                <pose>-1 -1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>0.5</time>
+                <pose>-1 1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>1.0</time>
+                <pose>1 1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>1.5</time>
+                <pose>1 -1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>2.0</time>
+                <pose>-1 -1 1 0 0 0</pose>
+             </waypoint>
+          </trajectory>
+        </script>
+      </actor>
+      <actor name="actor">
+      <skin>
+        <filename>walk.dae</filename>
+        <pose>0 0 .5</pose>
+      </skin>
+      <script>
+          <loop>true</loop>
+          <delay_start>0.000000</delay_start>
+          <auto_start>true</auto_start>
+          <trajectory id="0" type="square">
+             <waypoint>
+                <time>0.0</time>
+                <pose>-1 -1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>0.5</time>
+                <pose>-1 1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>1.0</time>
+                <pose>1 1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>1.5</time>
+                <pose>1 -1 1 0 0 0</pose>
+             </waypoint>
+             <waypoint>
+                <time>2.0</time>
+                <pose>-1 -1 1 0 0 0</pose>
+             </waypoint>
+          </trajectory>
+        </script>
+    </actor>
+  </world>
+</sdf>

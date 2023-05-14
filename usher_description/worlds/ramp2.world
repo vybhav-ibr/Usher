@@ -1,0 +1,39 @@
+
+<sdf version="1.7">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="box">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name="link_hotel">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+            <uri>model://meshes/finh.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+            <uri>model://meshes/finh.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <mass>1500</mass>
+      </link>
+      <joint name="bj" type="fixed">
+        <parent>sun</parent>
+        <child>link_hotel</child>
+      </joint>
+      <velocity>0 0 0 0 0 0</velocity>
+    </model>
+  </world>
+</sdf>

@@ -6,6 +6,8 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Point
 from nav_msgs.msg import Odometry
 from box import GUI
+from lid_open import MyGazeboPlugin
+from time import sleep
 
 current_position = Point()
 
@@ -82,15 +84,22 @@ if __name__ == '__main__':
         cnt=0
         while(True):
             com=input("Would you like to continue :")
-            if com=='N' or com=='n':
-                break
-            else:
+            if com=='Y' or com=='y':
                 g=GUI()
                 print("Going to room",g.s)
                 coord=dim[g.s]
                 x = coord[0]
                 y = coord[1]
-                go_to_a_specific_point(x, y)
+                reached=go_to_a_specific_point(x, y)
+                if(reached==True):
+                    plugin = MyGazeboPlugin()
+                    sleep(5)
+                    plugin.move_joint(effort=1.0, duration=2.0)  # Adjust the effort and duration as needed
+                    sleep(5)
+                    plugin.move_joint(effort=-1.0, duration=2.0)  # Adjust the effort and duration as needed
+                    #rospy.spin()
+            else:
+                break
         
 
     except rospy.ROSInterruptException:

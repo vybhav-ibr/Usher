@@ -1,6 +1,8 @@
 # Usher
 A Robot which can be used in a hotel to guide guests to their rooms, carry their luggage and make deliveries directly to their door step
 
+https://github.com/vybhav-ibr/Usher/assets/119930636/c11572d7-98bb-40e9-915c-3dfcf42c2300
+
 Instruction for use:
 ### 1, Launch the gazebo environment
     roslaunch usher_description gazebo.launch
@@ -17,6 +19,5 @@ Instruction for use:
 
 
 
-https://github.com/vybhav-ibr/Usher/assets/119930636/c11572d7-98bb-40e9-915c-3dfcf42c2300
 
 

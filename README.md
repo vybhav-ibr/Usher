@@ -11,7 +11,7 @@ Instruction for use:
     roslaunch usher_description navigation.launch
     
 ### 3, Starts the GUI based controller
-    roslaunch usher_description navigation.launch
+    python3 usher_description/scripts/path_plan2.py
     
     "A controller with a GUI, when a button is clicked, the robot moves to that location
     This has a while True architecture so it the code will keep asking if you want to continue, 
